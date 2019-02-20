@@ -7,45 +7,65 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class PedestrianPath : MonoBehaviour
 {
     public GameObject pedestrianPrefab; // The pedestrian AI third-person controller for spawning
-    public int numberOfInstances = 1; // -1: Unlimited. TODO: To be implemented later
-    public float minSpawnTime = 0; // Minimum seconds between every spawn. TODO: To be implemented later
-    public float maxSpawnTime = 10f; // Maximum seconds between every spawn. TODO: To be implemented later
 
     public GameObject pedestrianStartNode; 
     public PedestrianDest[] pedestrianNodes;
     public PedestrianEnd pedestrianEndNode;
 
+    [HideInInspector] public float currentSpeed = 0;
     private NavMeshAgent pedestrianNavMesh;
     private AICharacterControl pedestrianControl;
+
     private GameObject pedestrianCharacter;
+
     private bool isWaiting = false;
     private int currentNode = 0;
-    PedestrianDest nextNode;
+    private PedestrianDest nextNode;
 
     const float DESTINATION_PROXIMITY = 0.8f;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
         // Spawn new pedestrian
-        pedestrianCharacter = (GameObject)Instantiate(pedestrianPrefab, pedestrianStartNode.transform.position, Quaternion.identity);
+        SpawnNewPedestrian();
+
+        // Hide start node
+        pedestrianStartNode.GetComponent<Renderer>().enabled = false;
+    }
+
+  
+
+    // Update is called once per frame
+    public void FixedUpdate()
+    {
+        SetNextNode();
+        CheckWaiting();
+
+        // Set target
+        SetTarget(nextNode.transform);
+
+    }
+
+    public GameObject SpawnNewPedestrian()
+    {
+        pedestrianCharacter = (GameObject)Instantiate(pedestrianPrefab, pedestrianStartNode.transform.position, Quaternion.identity, this.transform);
         pedestrianNavMesh = pedestrianCharacter.GetComponent<NavMeshAgent>();
         pedestrianControl = pedestrianCharacter.GetComponent<AICharacterControl>();
+        pedestrianCharacter.gameObject.tag = "Pedestrian";
 
-        // Go to the first node
+        // Go to the first node 
         if (pedestrianNodes.Length == 0)
             nextNode = pedestrianEndNode;
         else
             nextNode = pedestrianNodes[0];
-        
-        // Hide start node
-        pedestrianStartNode.GetComponent<Renderer>().enabled = false;
+        currentSpeed = nextNode.speed;
 
+        return pedestrianCharacter;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public void SetNextNode()
     {
         if (!pedestrianCharacter) return;
 
@@ -69,16 +89,40 @@ public class PedestrianPath : MonoBehaviour
             else
                 nextNode = pedestrianEndNode;
 
-            // Start waiting if waitBeforeMoving > 0
-            if (nextNode.waitBeforeMoving > 0)
-                StartCoroutine(Wait(nextNode.waitBeforeMoving));
+            // Set speed to next node's speed;
+            currentSpeed = nextNode.speed;
         }
+    }
 
-        pedestrianControl.target = nextNode.transform;
+    public PedestrianDest GetNextNode()
+    {
+        return nextNode;
+    }
+
+    public GameObject GetPedestrianCharacter()
+    {
+        return pedestrianCharacter;
+    }
+
+    public void SetTarget(Transform t)
+    {
+        if (!pedestrianCharacter) return;
+
+        pedestrianControl.target = t;
+
         if (isWaiting)
             pedestrianNavMesh.speed = 0;
         else
-            pedestrianNavMesh.speed = nextNode.speed;
+            pedestrianNavMesh.speed = currentSpeed;
+    }
+
+    public void CheckWaiting()
+    {
+        if (!pedestrianCharacter) return;
+
+        // Start waiting if waitBeforeMoving > 0
+        if (nextNode.waitBeforeMoving > 0)
+            StartCoroutine(Wait(nextNode.waitBeforeMoving));
 
     }
 
