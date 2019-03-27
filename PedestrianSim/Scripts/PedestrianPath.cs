@@ -75,8 +75,8 @@ public class PedestrianPath : MonoBehaviour
             if (nextNode == pedestrianEndNode) // Reach the end
             {
                 if (pedestrianEndNode.destinationReached == DestinationReached.Destroy) { Destroy(pedestrianCharacter); }
-                else if (pedestrianEndNode.destinationReached == DestinationReached.TurnBack) { }
-                else if (pedestrianEndNode.destinationReached == DestinationReached.GoToStart) { }
+                else if (pedestrianEndNode.destinationReached == DestinationReached.TurnBack) { } //TODO: To be implemented
+                else if (pedestrianEndNode.destinationReached == DestinationReached.GoToStart) { } //TODO: To be implemented
                 else
                     pedestrianControl.target = null;
             }

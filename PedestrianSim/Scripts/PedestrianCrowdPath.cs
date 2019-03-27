@@ -12,8 +12,8 @@ public class PedestrianCrowdPath : PedestrianPath
         // Hide start node
         pedestrianStartNode.GetComponent<Renderer>().enabled = false;
 
-        currentTarget = new GameObject();
-
+        currentTarget = new GameObject("Current Target");
+        currentTarget.transform.parent = this.transform;
     }
 
     // Update is called once per frame

@@ -17,6 +17,7 @@ public class PedestrianCrowdGen : MonoBehaviour
     private List<GameObject> pedestrianPathInstances; // List of generated paths (clone)
     private List<GameObject> allPedestrians;
 
+    public bool randomiseRoute = false;
     public bool useBoidMovement = true;
     public float BOID_THINKING_RATE = 0.5f;
     public float BOID_SQR_MAGNITUDE = 16f;
@@ -45,21 +46,29 @@ public class PedestrianCrowdGen : MonoBehaviour
             GameObject clonedPath = Instantiate(pathTemplate, pathTemplate.transform.position, Quaternion.identity, this.transform);
             pedestrianPathInstances.Add(clonedPath);
 
+            if (randomiseRoute)
+            {
+                foreach (PedestrianDest pedDest in clonedPath.GetComponent<PedestrianCrowdPath>().pedestrianNodes)
+                {
+                    pedDest.transform.position += new Vector3(Random.Range(-1.5f, 1.5f), 0, Random.Range(-1.5f, 1.5f));
+                }
+            }
+
             // Spawn new pedestrian
             GameObject go = clonedPath.GetComponent<PedestrianCrowdPath>().SpawnNewPedestrian();
-            //allPedestrians.Add(go);
 
             StartCoroutine(SpawnWaiting(Random.Range(minSpawnTime, maxSpawnTime)));
-            //currentNoOfInstances++;
         }
 
+        // Re-add all pedestrians into pedestrian list
         allPedestrians.Clear();
         currentNoOfInstances = 0;
         foreach (GameObject pedPathIns in pedestrianPathInstances)
         {
-            if (!pedPathIns.GetComponent<PedestrianCrowdPath>().GetPedestrianCharacter())
+            if (!pedPathIns.GetComponent<PedestrianCrowdPath>().GetPedestrianCharacter()) // No longer active
             {
                 pedestrianPathInstances.Remove(pedPathIns);
+                Destroy(pedPathIns);
                 break;
             }
             PedestrianCrowdPath p = pedPathIns.GetComponent<PedestrianCrowdPath>();
@@ -67,7 +76,6 @@ public class PedestrianCrowdGen : MonoBehaviour
             p.CheckWaiting();
             allPedestrians.Add(p.GetPedestrianCharacter());
             currentNoOfInstances++;
-
         }
 
         if (useBoidMovement)
@@ -93,6 +101,7 @@ public class PedestrianCrowdGen : MonoBehaviour
     public void SetPedestrianTargets()
     {
         if (isWaitingForBoid) return;
+        if (allPedestrians.Count == 0) return;
         foreach (GameObject go in allPedestrians)
         {
             //if (!go) return;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PedestrianPlayerBrain
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 4
+    vectorObservationSize: 3
     numStackedVectorObservations: 1
     vectorActionSize: 02000000
     cameraResolutions: []
@@ -24,15 +24,21 @@ MonoBehaviour:
   keyContinuousPlayerActions:
   - key: 97
     index: 0
-    value: -0.7
+    value: 0.7
   - key: 100
     index: 0
-    value: 0.7
+    value: -0.7
   - key: 119
     index: 1
     value: 0.7
   - key: 115
     index: 1
     value: -0.7
-  axisContinuousPlayerActions: []
+  axisContinuousPlayerActions:
+  - axis: Mouse X
+    index: 0
+    scale: -1
+  - axis: Mouse Y
+    index: 1
+    scale: 1
   discretePlayerActions: []
