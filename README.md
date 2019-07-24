@@ -4,7 +4,7 @@
 
 A collection of templates to add lively pedestrians into your environment. The templates make use of existing Unity NavMesh system for natural path finding and object avoiding.
 
-Unity-PedSIM includes:
+Unity Pedestrian SIM includes:
 
 ## 1. Pedestrian path follow
 With this template, it's possible to
