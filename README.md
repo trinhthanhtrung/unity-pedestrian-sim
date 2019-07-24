@@ -28,6 +28,6 @@ Demonstration video
 [![](https://lh3.googleusercontent.com/sHMiAfwilyt0vP90Jc5X1Jy8H8UfmdJR0oWg6RKj498UtVJmgUsvSALJfoL8MUr49bvqHEr65TYI4OyHdPff2pAekf0vouEXad7SRgMrjnJy9xAQ2bl2hPsLoXpvlFt8_Le7Wl_N0ve_jmDIUajCfvtnCZG7N-NSljYpQwDCy-5dMOghJbq3WN64FmH60GbRyX1KuRW3aVNKenK8zIHz6lOYoxWRU1iw_j1nc0deDZCvPcZv9SP8-sQ-9rFXvXtXA7VruDSVq_LuT2cQpyAGtxz8AwOIkjaOGw4lAwNFbXlEwLp_7fXfwFHRDu5t_6_0t_FJiO89PsGEfRmWqbGc_nNribldefhOqVWW8TBqwp7xtXeVQIJntyNqAbdBJTc_ZPuaZi2xf_elnShGU_OMxQoO2LxA4PbpJHZsqB6lcHUqUslp-EqLYwHHZEdZ2DI5XxEH-C1cuC1JbwsapY7zkCNKALtKSSLvR4cpd7Va0kpiqt0iJSVxuVeg2z4EJQ8WUuArpKYpF7hhv9ATqyHwJUc4-o15O5ykF_fL_JYKGd3z1Sv9NyE62d2igfHCvS_QOq3kfgB6Uk9Cs-CPTdzGEYqfDxQfkWDn9W0hxk0Cm7RWdls_WKIOSbSo-RvdcX4igSvfejzTFxuJZatMXFgw5_15Cyc885w=w854-h400-no)](http://www.youtube.com/watch?v=1i5-lEEf59o "")
 
 ## 3. Social Force Model pedestrian
-This template is an implementation of the Social Force Model based on existing C++ codes from https://github.com/fawwazbmn/SocialForceModel. The model provides more natural walking behaviour for medium to large group of pedestrians.
+This template is an implementation of the Social Force Model based on the research by Helbing and Molnár (1995), later improved by Moussaïd et al. (2009). The model provides more natural walking behaviour for medium to large group of pedestrians.
 
 All three templates can be found at *Example* scene.
