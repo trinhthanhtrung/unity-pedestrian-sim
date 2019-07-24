@@ -560,8 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3a65411decf604f8c2f964e5d7dd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedestrianPrefab: {fileID: 6294225274035515359, guid: d3ebaa42393fd0c44a76f24a49a3b9f4,
-    type: 3}
+  pedestrianPrefab: {fileID: 113348, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
   pedestrianStartNode: {fileID: 405093028}
   pedestrianNodes:
   - {fileID: 2020052401}
@@ -1073,7 +1072,7 @@ SphereCollider:
   m_GameObject: {fileID: 258958242}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1169,7 +1168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &260708494
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4688,8 +4687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3a65411decf604f8c2f964e5d7dd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedestrianPrefab: {fileID: 6294225274035515359, guid: d3ebaa42393fd0c44a76f24a49a3b9f4,
-    type: 3}
+  pedestrianPrefab: {fileID: 113348, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
   pedestrianStartNode: {fileID: 651815602}
   pedestrianNodes:
   - {fileID: 1509232280}
@@ -7074,7 +7072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1835949610
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8620,8 +8618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64367115f616fe42a893ebea32a5cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedestrianPrefab: {fileID: 6294225274035515359, guid: d3ebaa42393fd0c44a76f24a49a3b9f4,
-    type: 3}
+  pedestrianPrefab: {fileID: 113348, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
   pedestrianStartNode: {fileID: 8161385658066767532}
   pedestrianNodes:
   - {fileID: 5489674859867625225}
@@ -9298,8 +9295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3a65411decf604f8c2f964e5d7dd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedestrianPrefab: {fileID: 6294225274035515359, guid: d3ebaa42393fd0c44a76f24a49a3b9f4,
-    type: 3}
+  pedestrianPrefab: {fileID: 113348, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
   pedestrianStartNode: {fileID: 1105920380388669676}
   pedestrianNodes:
   - {fileID: 3617845743276695881}
